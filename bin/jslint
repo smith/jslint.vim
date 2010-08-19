@@ -7,7 +7,7 @@ if RUBY_PLATFORM =~ /win32/i
   runjslint_ext = 'wsf'
   plugin_path = File.join(ENV['HOME'], 'vimfiles')
 else
-  js_cmd = 'js'
+  js_cmd = 'node'
   runjslint_ext = 'js'
   plugin_path = File.join(ENV['HOME'], '.vim')
 end

@@ -1,41 +1,25 @@
-/*global JSLINT load readline print */
+#!/usr/bin/env node
 
-load('fulljslint.js');
+var JSLINT = require("./jslint-core").JSLINT,
+    print = require("sys").print,
+    stdin = process.openStdin(),
+    body = "";
 
-var readSTDIN = function() {
-    var line, 
-        input = [], 
-        emptyCount = 0,
-        i;
+stdin.on("data", function (chunk) { body += chunk; });
 
-    line = readline();
-    while (emptyCount < 25) {
-        input.push(line);
-        if (line) {
-            emptyCount = 0;
-        } else {
-            emptyCount += 1;
-        }
-        line = readline();
-    }
+stdin.on("end", function () {
+    var ok = JSLINT(body),
+        i,
+        error,
+        errorCount;
 
-    input.splice(-emptyCount);
-    return input.join("\n");
-};
-
-var body = readSTDIN() || arguments[0],
-    ok = JSLINT(body),
-    i,
-    error,
-    errorCount;
-
-if (!ok) {
-    errorCount = JSLINT.errors.length;
-    for (i = 0; i < errorCount; i += 1) {
-        error = JSLINT.errors[i];
-        if (error && error.reason && error.reason.match(/^Stopping/) === null) {
-            print([error.line, error.character, error.reason].join(":"));
+    if (!ok) {
+        errorCount = JSLINT.errors.length;
+        for (i = 0; i < errorCount; i += 1) {
+            error = JSLINT.errors[i];
+            if (error && error.reason && error.reason.match(/^Stopping/) === null) {
+                print([error.line, error.character, error.reason].join(":"));
+            }
         }
     }
-}
-
+});
