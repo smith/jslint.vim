@@ -6,7 +6,7 @@ require 'find'
 require 'pathname'
 
 PLUGIN = [
-  "plugin/jslint/fulljslint.js",
+  "plugin/jslint/jslint-core.js",
   "plugin/jslint/jslint.vim",
   "plugin/jslint/runjslint.js",
   "plugin/jslint/runjslint.wsf",

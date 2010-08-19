@@ -17,10 +17,7 @@ This is alpha software and is under heavy development.
 Installation and Use
 -----------------------
 
-- Make sure you have a JavaScript interpreter installed. In Ubuntu you can
-  install the Spidermonkey shell with this command:
-
-        $ sudo apt-get install spidermonkey-bin
+- Make sure you have [Node](http://nodejs.org/) installed. This plugin has been tested with Node version 0.1.104.
 
   On Windows you can use `cscript.exe` - which is probably already installed.
 
@@ -134,7 +131,7 @@ Credits
 
 - Jesse Hallett -- original author
 - Nathan Smith -- Windows compatibility, quickfix integration, better OS X
-  compatibility, and many other improvements
+  compatibility, Node version, and many other improvements
 - Travis Jeffery -- Easy plugin installation with rake
 - Sam Goldstein -- Display of problem report for the current line and bug fixes
 - Bryan Chow -- Fixes for formatting issues and typos
